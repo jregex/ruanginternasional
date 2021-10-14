@@ -38,7 +38,7 @@
               </div>
               <div class="profile_info">
                 <span>Welcome,</span>
-                <h2>John Doe</h2>
+                <h2>{{session()->get('akun-admin.nama')}}</h2>
               </div>
               <div class="clearfix"></div>
             </div>
@@ -51,14 +51,10 @@
               <div class="menu_section">
                 <h3>General</h3>
                 <ul class="nav side-menu">
-                  <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
+                  <li class="{{($var=='dashboard') ? 'active':''}}"><a href="{{ route('dashboard') }}"><i class="fa fa-home"></i> Dashboard</a></li>
+                  <li><a><i class="fa fa-edit"></i> Master<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="{{ENV('APP_URL')}}">Dashboard</a></li>
-                    </ul>
-                  </li>
-                  <li class="active"><a><i class="fa fa-edit"></i> Master<span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li class="current-page"><a href="form.html">Article</a></li>=
+                      <li><a href="form.html">Article</a></li>
                     </ul>
                   </li>
                   <li><a><i class="fa fa-gears"></i>Settings <span class="fa fa-chevron-down"></span></a>
@@ -74,7 +70,7 @@
                 <ul class="nav side-menu">
                   <li><a><i class="fa fa-windows"></i> Extras <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="page_403.html">403 Error</a></li>
+                      <li><a href="#">Users</a></li>
                     </ul>
                   </li>
                 </ul>
@@ -96,11 +92,11 @@
                 <ul class=" navbar-right">
                   <li class="nav-item dropdown open" style="padding-left: 15px;">
                     <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
-                      <img src="{{ asset('assets/admin') }}/production/images/img.jpg" alt="">John Doe
+                      <img src="{{ asset('assets/admin') }}/production/images/img.jpg" alt="">{{session()->get('akun-admin.nama')}}
                     </a>
                     <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
                       <a class="dropdown-item"  href="javascript:;"> Profile</a>
-                      <a class="dropdown-item"  href="login.html"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
+                      <a class="dropdown-item"  href="{{ route('logout') }}"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
                     </div>
                   </li>
 
@@ -125,17 +121,7 @@
             <div class="clearfix"></div>
 
             <div class="row">
-              <div class="col-md-12 col-sm-12  ">
-                <div class="x_panel">
-                  <div class="x_title">
-                    <h2>{{$title}}</h2>
-                    <div class="clearfix"></div>
-                  </div>
-                  <div class="x_content">
-                      Welcome to Monitoring Admin Page Ruang Internasional
-                  </div>
-                </div>
-              </div>
+              @yield('admin-content')
             </div>
           </div>
         </div>

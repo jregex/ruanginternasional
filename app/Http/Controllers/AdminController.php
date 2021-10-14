@@ -12,6 +12,6 @@ class AdminController extends Controller
             'title' => 'Dashboard',
             'var' => 'dashboard'
         ];
-        return view('layouts.main-admin', $data);
+        return view('admin.index', $data);
     }
 }

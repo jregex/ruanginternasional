@@ -17,11 +17,7 @@ class User extends Authenticatable
      *
      * @var string[]
      */
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-    ];
+    protected $fillable = ['username', 'nama', 'email', 'password', 'gambar', 'login_time', 'role_id'];
 
     /**
      * The attributes that should be hidden for serialization.
@@ -41,4 +37,11 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function getUsername($username)
+    {
+        return $this->where('username', $username)
+            ->orWhere('email', $username)
+            ->first();
+    }
 }

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,4 +15,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [AdminController::class, 'index']);
+// Login
+Route::get('/log-ruang', [UserController::class, 'index'])->name('login');
+Route::post('/log-ruang', [UserController::class, 'login'])->name('login-act');
+Route::get('/log-out', [UserController::class, 'logout_'])->name('logout');
+// admin
+Route::group(['prefix' => 'admin', 'middleware' => 'cek-login'], function () {
+    Route::get('/', [AdminController::class, 'index'])->name('dashboard');
+});
