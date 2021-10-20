@@ -15,6 +15,15 @@
     <link href="{{ asset('assets/admin') }}/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- NProgress -->
     <link href="{{ asset('assets/admin') }}/vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- iCheck -->
+    <link href="{{ asset('assets/admin') }}/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+    <!-- Datatables -->
+
+    <link href="{{ asset('assets/admin') }}/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
+    <link href="{{ asset('assets/admin') }}/vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
+    <link href="{{ asset('assets/admin') }}/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css" rel="stylesheet">
+    <link href="{{ asset('assets/admin') }}/vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css" rel="stylesheet">
+    <link href="{{ asset('assets/admin') }}/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom Theme Style -->
     <link href="{{ asset('assets/admin') }}/build/css/custom.min.css" rel="stylesheet">
@@ -34,7 +43,7 @@
             <!-- menu profile quick info -->
             <div class="profile clearfix">
               <div class="profile_pic">
-                <img src="{{ asset('assets/admin') }}/production/images/img.jpg" alt="..." class="img-circle profile_img">
+                <img src="{{ asset('assets/admin') }}/images/profile/{{ session()->get('akun-admin.gambar') }}" alt="..." class="img-circle profile_img">
               </div>
               <div class="profile_info">
                 <span>Welcome,</span>
@@ -57,10 +66,10 @@
                       <li><a href="form.html">Article</a></li>
                     </ul>
                   </li>
-                  <li><a><i class="fa fa-gears"></i>Settings <span class="fa fa-chevron-down"></span></a>
+                  <li class="{{($var=='settings') ? 'active':''}}"><a><i class="fa fa-gears"></i>Settings <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="fixed_sidebar.html">Change Password</a></li>
-                      <li><a href="fixed_footer.html">My Profile</a></li>
+                      <li class="{{($var=='settings') ? 'current-page':''}}"><a href="#">Change Password</a></li>
+                      <li class="{{($var=='settings') ? 'current-page active':''}}"><a href="{{ route('users.profile') }}">My Profile</a></li>
                     </ul>
                   </li>
                 </ul>
@@ -68,9 +77,9 @@
               <div class="menu_section">
                 <h3>Administrator</h3>
                 <ul class="nav side-menu">
-                  <li><a><i class="fa fa-windows"></i> Extras <span class="fa fa-chevron-down"></span></a>
+                  <li class="{{($var=='users') ? 'active':''}}"><a><i class="fa fa-windows"></i> Extras <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
-                      <li><a href="#">Users</a></li>
+                      <li class="{{($var=='users') ? 'current-page':''}}"><a href="{{ route('users.list') }}">Users</a></li>
                     </ul>
                   </li>
                 </ul>
@@ -92,10 +101,10 @@
                 <ul class=" navbar-right">
                   <li class="nav-item dropdown open" style="padding-left: 15px;">
                     <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
-                      <img src="{{ asset('assets/admin') }}/production/images/img.jpg" alt="">{{session()->get('akun-admin.nama')}}
+                      <img src="{{ asset('assets/admin') }}/images/profile/{{ session()->get('akun-admin.gambar') }}" alt="">{{session()->get('akun-admin.nama')}}
                     </a>
                     <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
-                      <a class="dropdown-item"  href="javascript:;"> Profile</a>
+                      <a class="dropdown-item"  href="{{ route('users.profile') }}"><i class="fa fa-user pull-right"></i> Profile</a>
                       <a class="dropdown-item"  href="{{ route('logout') }}"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
                     </div>
                   </li>
@@ -146,6 +155,25 @@
     <script src="{{ asset('assets/admin') }}/vendors/fastclick/lib/fastclick.js"></script>
     <!-- NProgress -->
     <script src="{{ asset('assets/admin') }}/vendors/nprogress/nprogress.js"></script>
+
+    <!-- iCheck -->
+    <script src="{{ asset('assets/admin') }}/vendors/iCheck/icheck.min.js"></script>
+    <!-- Datatables -->
+    <script src="{{ asset('assets/admin') }}/vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="{{ asset('assets/admin') }}/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+    <script src="{{ asset('assets/admin') }}/vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="{{ asset('assets/admin') }}/vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
+    <script src="{{ asset('assets/admin') }}/vendors/datatables.net-buttons/js/buttons.flash.min.js"></script>
+    <script src="{{ asset('assets/admin') }}/vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
+    <script src="{{ asset('assets/admin') }}/vendors/datatables.net-buttons/js/buttons.print.min.js"></script>
+    <script src="{{ asset('assets/admin') }}/vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
+    <script src="{{ asset('assets/admin') }}/vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
+    <script src="{{ asset('assets/admin') }}/vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="{{ asset('assets/admin') }}/vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+    <script src="{{ asset('assets/admin') }}/vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
+    <script src="{{ asset('assets/admin') }}/vendors/jszip/dist/jszip.min.js"></script>
+    <script src="{{ asset('assets/admin') }}/vendors/pdfmake/build/pdfmake.min.js"></script>
+    <script src="{{ asset('assets/admin') }}/vendors/pdfmake/build/vfs_fonts.js"></script>
 
     <!-- Custom Theme Scripts -->
     <script src="{{ asset('assets/admin') }}/build/js/custom.min.js"></script>
