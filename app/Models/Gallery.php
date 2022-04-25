@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Gallery extends Model
 {
     use HasFactory;
+
+    protected $guarded = ['id'];
+
+
+    public function sub_galleries()
+    {
+        return $this->hasMany(Sub_Gallery::class);
+    }
 }
