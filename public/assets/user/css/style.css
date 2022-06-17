@@ -1374,15 +1374,17 @@ textarea:-moz-placeholder {
 /*-------------------------------------------------------------
                     Back Top
 -------------------------------------------------------------*/
+
 .hm_go_top {
     display: inline-block;
-    height: 43px;
-    width: 43px;
+    height: 66px;
+    width: 66px;
     position: fixed;
     bottom: 20px;
     right: 20px;
-    background: #0f93e0ff url(../images/hm-top-arrow.svg) no-repeat center 50%;
+    background: url(../images/whatsapp.png) no-repeat center 50%;
     visibility: hidden;
+    border-radius: 50%;
     opacity: 0;
     z-index: 1;
     -webkit-transform: translateZ(0);
@@ -1392,7 +1394,7 @@ textarea:-moz-placeholder {
     opacity: 1;
 }
 .hm_go_top:hover {
-    opacity: 0.8;
+    opacity: 0.6;
 }
 /*-------------------------------------------------------------
                     Logo Light & Dark
@@ -16351,9 +16353,9 @@ body.site_boxed.dark,
     }
     .hm_go_top {
         bottom: 20px;
-        height: 43px;
+        height: 66px;
         right: 20px;
-        width: 43px;
+        width: 66px;
     }
 }
 @media only screen and (max-width: 1024px) {

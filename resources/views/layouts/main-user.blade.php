@@ -325,7 +325,7 @@
             </div>
         </footer>
         <!-- End footer -->
-        <a href="#0" class="hm_go_top"></a>
+        <a href="https://cutt.ly/vGh57OY" target="_blank" class="hm_go_top"></a>
     </div>
     <!-- End wrapper -->
 
@@ -333,7 +333,7 @@
     <script>
         window.jQuery || document.write(
             '<script src="{{ asset('
-                                                                                                                                            			assets / user ') }}/js/jquery.js"><\/script>'
+                                                                                                                                                                                                        			assets / user ') }}/js/jquery.js"><\/script>'
         );
     </script>
     <script src="{{ asset('assets/user') }}/js/plugins.js"></script>
