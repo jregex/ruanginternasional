@@ -183,7 +183,7 @@ class PostController extends Controller
             'penulis' => $request->session()->get('akun-admin.nama')
         ]);
         if ($update) {
-            return redirect()->route('posts.index')->with('success', 'Data Berhasil diupdate');
+            return redirect()->route('posts.show', ['post' => $post->id])->with('success', 'Data Berhasil diupdate');
         } else {
             return redirect()->route('posts.index')->with('failed', 'Data Gagal diupdate');
         }

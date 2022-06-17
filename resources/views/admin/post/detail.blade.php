@@ -13,7 +13,7 @@
                     <div class="col text-right">
                         <a href="{{ route('posts.index') }}" class="btn btn-danger">Kembali</a>
                         <a href="{{ $post->published == 1 ? 'javascript:void(0)' : route('post.published', ['post' => $post->id]) }}"
-                            class="btn btn-success {{ $post->published == 1 ? 'disabled' : '' }}">Publish</a>
+                            class="btn btn-primary {{ $post->published == 1 ? 'disabled' : '' }}">Publish</a>
                     </div>
                 </div>
             </div>
